@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table table-stripped ">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of getCartItems()">
+        <th scope="row">{{ item.name }}</th>
+        <td>Rs. {{ item.rate }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>Rs. {{ item.total }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Total</th>
+        <td></td>
+        <td>{{ getTotalQuantity() }}</td>
+        <td>Rs. {{ getTotalAmount() }}</td>
+      </tr>
+      <tr>
+        <button type="button" class="btn btn-success btn-block" routerLink="/order">Alter the order</button>
+      </tr>
+    </tbody>
+  </table>
+</div>

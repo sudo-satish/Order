@@ -1,0 +1,3 @@
+<div class="container">
+  <a *ngFor="let holdItem of cart.getHoldQueue()" (click)="populateHoldItem(holdItem._id)" class="list-group-item list-group-item-action list-group-item-light"> Total Item {{ holdItem.totalQuantity }}, Total Amount {{ holdItem.totalAmount }}</a>
+</div>

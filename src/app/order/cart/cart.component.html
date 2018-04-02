@@ -1,0 +1,71 @@
+<div class="container">
+
+  <!-- <h2>
+    cart works!
+  </h2> -->
+  
+  <!-- <div *ngFor = "let item of cartItems" class="card" style="width: 20rem;">
+    <div class="card-body">
+      <h4 class="card-title">{{ item.name }}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">{{ item.desc }}</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link"> - </a>
+      <a href="#" class="card-link"> 1 </a>
+      <a href="#" class="card-link"> + </a>
+    </div>
+  </div> -->
+
+  <!-- <ul class="list-group">
+    <li class="list-group-item" *ngFor = "let item of cartItems">
+      {{ item.name }} 
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">-</button>
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">+</button>
+      </div>
+      Rs. {{ item.rate }}
+    </li>
+  </ul> -->
+
+  <table class="table table-stripped ">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let item of getCartItems()">
+        <th scope="row">{{ item.name }}</th>
+        <td>Rs. {{ item.rate }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>Rs. {{ item.total }}</td>
+        <td>
+          <button type="button" class="btn btn-secondary" (click) = "removeOneItem(item._id)">-</button>
+          <button type="button" class="btn btn-secondary" (click) = "addOneItem(item._id)">1</button>
+          <button type="button" class="btn btn-secondary" (click) = "addOneItem(item._id)">+</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Total</th>
+        <td></td>
+        <td>{{ getTotalQuantity() }}</td>
+        <td>Rs. {{ getTotalAmount() }}</td>
+        <td> <button type="button" class="btn btn-danger" (click)="resetCart()">Reset the cart</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-6"><button type="button" class="btn btn-success btn-block" routerLink="/payment">Place the order</button></div>
+    <div class="col-6"><button type="button" class="btn btn-info btn-block" (click)="holdOrder()">Hold Order</button></div>
+  </div>
+  
+  
+</div>
+
+
+
+
