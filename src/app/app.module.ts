@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { XHRBackend, RequestOptions } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { OrderComponent } from './order/order.component';
@@ -14,7 +15,10 @@ import { MessageService } from './services/message.service';
 import { HoldOrderComponent } from './order/hold-order/hold-order.component';
 import { PaymentFormComponent } from './payment/payment-form/payment-form.component';
 import { InvoiceComponent } from './payment/invoice/invoice.component';
+import { HttpServiceService } from './services/http-service.service';
+import { PlaygroundComponent } from './playground/playground/playground.component';
 
+import { httpServiceFactory } from './http.service.factory';
 
 @NgModule({
   declarations: [
@@ -25,14 +29,23 @@ import { InvoiceComponent } from './payment/invoice/invoice.component';
     MessagesComponent,
     HoldOrderComponent,
     PaymentFormComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    PlaygroundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [CartService, MessageService],
+  providers: [CartService, MessageService
+    ,
+    HttpServiceService,
+    // {
+    //   provide: HttpServiceService,
+    //   useFactory: httpServiceFactory,
+    //   deps: [XHRBackend, RequestOptions]
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
