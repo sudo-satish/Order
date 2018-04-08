@@ -6,6 +6,8 @@ import { Item } from './Item';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from './message.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CartService {
@@ -13,12 +15,7 @@ export class CartService {
   holdId:number = 0;
   totalQuantity = 0;
   totalAmount = 0;
-  items: Item[] = [
-    { _id: 101, name: 'Pizza', code: 'pizza001', rate: 50, desc: 'Small family size pizza', offers: [{}] },
-    { _id: 102, name: 'Burger', code: 'burger001', rate: 50, desc: 'Small burger for one', offers: [{}] },
-    { _id: 103, name: 'Veg Roll', code: 'vegroll001', rate: 25, desc: 'Veg roll for one', offers: [{}] },
-    { _id: 104, name: 'Non-Veg Roll', code: 'nonvegroll001', rate: 30, desc: 'Double egg roll', offers: [{}] },
-  ];
+  items: Item[];
 
   cartItems: Cart[] = [
    // { _id: 0, name: 'Total', code: 'total001', rate: '', totalAmount:0, totalQuantity:0, desc: 'Total Amount', offers: [{}] },
@@ -27,11 +24,14 @@ export class CartService {
 
   ];
 
-  constructor(private messageService: MessageService) { }
+  constructor(
+          private messageService: MessageService,
+          private httpClient: HttpClient,
+          private router: Router
+        ) { }
 
   getItems() {
-
-    return this.items;
+    return this.httpClient.get('/product/item');
   }
 
   getCartItems() {
@@ -178,6 +178,9 @@ export class CartService {
 
   placeOrder() {
     this.messageService.add('Order Placed, Order Details => '+ JSON.stringify(this.cartItems));
+    console.log('Order  => ',this.cartItems);
+    this.router.navigate(['/order']);
+    
     return this.resetCart();
   }
   holdOrder() {

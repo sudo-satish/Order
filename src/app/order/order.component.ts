@@ -10,6 +10,11 @@ export class OrderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    var token = localStorage.getItem('token');
+    if (token) {
+      console.log('Order comp => ', token);
+      
+    }
   }
 
 }

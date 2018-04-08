@@ -15,10 +15,16 @@ import { MessageService } from './services/message.service';
 import { HoldOrderComponent } from './order/hold-order/hold-order.component';
 import { PaymentFormComponent } from './payment/payment-form/payment-form.component';
 import { InvoiceComponent } from './payment/invoice/invoice.component';
-import { HttpServiceService } from './services/http-service.service';
+// import { HttpServiceService } from './services/http-service.service';
 import { PlaygroundComponent } from './playground/playground/playground.component';
-
-import { httpServiceFactory } from './http.service.factory';
+import { AuthModule } from './auth/auth.module';
+import { DataStorageService } from './shared/data-storage.service';
+import { AuthService } from './auth/auth.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth.interceptor';
+import { LoggingInterceptor } from './shared/logging.interceptor';
+import { SharedModule } from './shared/shared.module';
+// import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
   declarations: [
@@ -35,11 +41,19 @@ import { httpServiceFactory } from './http.service.factory';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    AuthModule,
+    HttpClientModule
   ],
-  providers: [CartService, MessageService
-    ,
-    HttpServiceService,
+  providers: [
+    CartService, 
+    MessageService,
+    DataStorageService,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }
+    // ,
     // {
     //   provide: HttpServiceService,
     //   useFactory: httpServiceFactory,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import * as _ from "lodash";
+import { Item } from '../../services/Item';
 
 @Component({
   selector: 'app-order-form',
@@ -13,7 +14,11 @@ export class OrderFormComponent implements OnInit {
   constructor(private cart: CartService) { }
   
   ngOnInit() {
-    this.items = this.cart.getItems();
+    this.cart.getItems().subscribe((item: Item[]) => {
+      this.items = item;
+      this.cart.items = item;
+      console.log('Fetched Items', this.items);
+    });
   }
 
   add(item: String) {
