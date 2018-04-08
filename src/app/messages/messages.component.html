@@ -1,5 +1,11 @@
-<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="messageService.messages.length">
-  <div *ngFor='let message of messageService.messages'> {{ message }} </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="messageService.messages !== '' && messageService.type == 'success'">
+  <div> {{ messageService.messages }} </div>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="messageService.clear()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="messageService.messages !== '' && messageService.type == 'error'">
+  <div > {{ messageService.messages }} </div>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="messageService.clear()">
     <span aria-hidden="true">&times;</span>
   </button>

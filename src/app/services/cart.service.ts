@@ -79,7 +79,7 @@ export class CartService {
 
   addOneToCart(itemId) {
     
-    this.messageService.add('Item added in cart!!');
+    this.messageService.add('sucess','Item added in cart!!');
     var id = parseInt(itemId);
     var quantity = 1;
 
@@ -177,7 +177,7 @@ export class CartService {
   }
 
   placeOrder() {
-    this.messageService.add('Order Placed, Order Details => '+ JSON.stringify(this.cartItems));
+    this.messageService.add('success', 'Order Placed, Order Details => '+ JSON.stringify(this.cartItems));
     console.log('Order  => ',this.cartItems);
     this.router.navigate(['/order']);
     
