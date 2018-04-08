@@ -1,5 +1,0 @@
-Please Note that the implementation of Http failed and hence need to look folloeing files.
-1. http.service.factory.ts
-2. my-custom-request-options.ts
-3. http-service.service.ts
-4. http-service.service.specs.ts
