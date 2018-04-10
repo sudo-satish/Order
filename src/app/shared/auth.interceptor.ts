@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(req.url);
+    // console.log(req.url);
     let token = localStorage.getItem('token');
     const copiedReq = req.clone({
       headers: req.headers.append('Auth', 'Bearer ' + token), url: 'http://localhost:3000' + req.url});

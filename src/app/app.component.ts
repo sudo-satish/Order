@@ -10,9 +10,7 @@ export class AppComponent {
   constructor(
     private authService: AuthService
   ){
-    let token = localStorage.getItem('token'); // Initialize the token
-    console.log('token');
-    console.log(token);
+    
     
   }
   title = 'app';

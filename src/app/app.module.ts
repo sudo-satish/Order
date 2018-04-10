@@ -24,6 +24,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { LoggingInterceptor } from './shared/logging.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { ProductModule } from './product/product.module';
+import { ProductService } from './product/product.service';
+// import { ItemComponent } from './product/item/item.component';
 // import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
@@ -36,7 +39,8 @@ import { SharedModule } from './shared/shared.module';
     HoldOrderComponent,
     PaymentFormComponent,
     InvoiceComponent,
-    PlaygroundComponent
+    PlaygroundComponent,
+    // ItemComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,7 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     SharedModule,
     AuthModule,
+    ProductModule,
     HttpClientModule
   ],
   providers: [
@@ -51,6 +56,7 @@ import { SharedModule } from './shared/shared.module';
     MessageService,
     DataStorageService,
     AuthService,
+    ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }
     // ,

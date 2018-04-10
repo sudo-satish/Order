@@ -1,0 +1,5 @@
+<ul class="list-group">
+  <button *ngFor="let item of productService.getItems()" type="button" class="btn btn-primary btn-lg item" [id] =" item._id" (click)="onEdit(item._id)">{{ item.name }}</button>
+  <!-- <li class="list-group-item" > sdf </li> -->
+  
+</ul>

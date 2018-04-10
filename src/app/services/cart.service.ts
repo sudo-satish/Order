@@ -28,10 +28,14 @@ export class CartService {
           private messageService: MessageService,
           private httpClient: HttpClient,
           private router: Router
-        ) { }
+        ) { 
+    this.httpClient.get('/product/item').subscribe((item: Item[]) => {
+      this.items = item;
+    });
+        }
 
   getItems() {
-    return this.httpClient.get('/product/item');
+    return this.items;
   }
 
   getCartItems() {
@@ -39,12 +43,18 @@ export class CartService {
   }
 
   addToCart(itemId) {
-    var id = parseInt(itemId);
+    // var id = parseInt(itemId);
+    // var id = itemId;
     var quantity = 1;
 
-    var item = _.find(this.items, {_id:id});
+    console.log('id => ', itemId);
+    
+    var item = _.find(this.items, { _id: itemId});
+
+    console.log('item', item);
+    
     if (_.isEmpty(item)) {
-      console.error('Could not find Item with ID => '+ id);
+      console.error('Could not find Item with ID => ' + itemId);
       return false;
     }
 
@@ -59,7 +69,7 @@ export class CartService {
       return true;
     }
     
-    var cartItem = _.find(this.cartItems, {_id:id});
+    var cartItem = _.find(this.cartItems, { _id: itemId});
 
     if(_.isEmpty(cartItem)) {
       item.quantity = quantity;
@@ -79,11 +89,11 @@ export class CartService {
 
   addOneToCart(itemId) {
     
-    this.messageService.add('sucess','Item added in cart!!');
-    var id = parseInt(itemId);
+    
+    var id = itemId;
     var quantity = 1;
-
     var item = _.find(this.items, {_id:id});
+
     if (_.isEmpty(item)) {
       console.error('Could not find Item with ID => '+ id);
       return false;
@@ -94,7 +104,7 @@ export class CartService {
       var amount = parseInt(item.rate) * parseInt(item.quantity);
       item.total = amount;
       this.cartItems.push(item);
-
+      this.messageService.add('sucess', 'Item added in cart!!');
       this.totalQuantity = this.calculateTotalQuantity();
       this.totalAmount = this.calculateTotalAmount();
       return true;
@@ -112,6 +122,7 @@ export class CartService {
     } else {
       item.quantity += quantity;
       item.total = parseInt(item.rate) * parseInt(item.quantity);
+     
       this.totalQuantity = this.calculateTotalQuantity();
       this.totalAmount = this.calculateTotalAmount();
       return true;
@@ -119,10 +130,11 @@ export class CartService {
   }
 
   removeOneFromCart(itemId) {
-    var id = parseInt(itemId);
+    var id = itemId;
     var quantity = 1;
 
     var item = _.find(this.items, { _id: id });
+
     if (_.isEmpty(item)) {
       console.error('Could not find Item with ID => ' + id);
       return false;

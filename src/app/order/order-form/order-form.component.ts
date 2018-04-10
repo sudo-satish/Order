@@ -14,11 +14,7 @@ export class OrderFormComponent implements OnInit {
   constructor(private cart: CartService) { }
   
   ngOnInit() {
-    this.cart.getItems().subscribe((item: Item[]) => {
-      this.items = item;
-      this.cart.items = item;
-      console.log('Fetched Items', this.items);
-    });
+    this.items = this.cart.getItems();
   }
 
   add(item: String) {

@@ -6,8 +6,8 @@ import { MessageService } from '../services/message.service';
 
 @Injectable()
 export class AuthService {
-  token: string;
-
+  token: string = '';
+  user: any = {};
   constructor(private router: Router,
               private httpClient: HttpClient,
               private messageService: MessageService
@@ -17,7 +17,6 @@ export class AuthService {
     // console.log(email, password);
     this.httpClient.post('/auth/signup', {email,password}).subscribe(data => {
       var token = data['tokens'][0].token;
-      localStorage.setItem('token', token);
       this.messageService.add('success', 'Signup Successful. You are login now.');
     },
   
@@ -31,38 +30,38 @@ export class AuthService {
   signinUser(email: string, password: string) {
 
     this.httpClient.post('/auth/signin', { email, password }).subscribe(data => {
-      console.log(data);
+      
       if( data['error']) {
         this.messageService.add('error', 'Login Failed');
       } else {
         var token = data['tokens'][0].token;
-        localStorage.setItem('token', token);
+        this.user = data;
+        this.token = token;
         this.messageService.add('success', 'Login Successful');
+        this.router.navigate(['']);
       }
     }, (err) => {
       this.messageService.add('error', 'Login Failed');
-      console.log(err);
-
     });
   }
 
   logout() {
-    // firebase.auth().signOut();
-    
-    localStorage.setItem('token', '');
+    this.token = '';
+    this.user = '';
     this.messageService.add('success', 'Logout Successfully');
   }
 
   getToken() {
-    // firebase.auth().currentUser.getToken()
-    //   .then(
-    //     (token: string) => this.token = token
-    //   );
+    
     return this.token;
   }
 
   isAuthenticated() {
-    let token = localStorage.getItem('token');
-    return  token !== '';
+    
+    return  this.token !== '';
+  }
+
+  getUser() {
+    return this.user;
   }
 }
