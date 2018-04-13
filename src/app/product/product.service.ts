@@ -37,7 +37,10 @@ export class ProductService {
     return this.items;
   }
   getItem(id) {
+    console.log(this.items);
+    
     let item = _.find(this.items, {_id:id});
+    console.log('item => ', item);
     
     return item;
   }

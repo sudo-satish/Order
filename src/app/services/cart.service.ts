@@ -188,9 +188,17 @@ export class CartService {
     return true;
   }
 
-  placeOrder() {
+  placeOrder(userDetail) {
     this.messageService.add('success', 'Order Placed, Order Details => '+ JSON.stringify(this.cartItems));
-    console.log('Order  => ',this.cartItems);
+    console.log('Order  => ',userDetail);
+    this.httpClient.post('/payment', {user: userDetail, order : this.cartItems}).subscribe((res) => {
+      // console.log(res);
+      this.messageService.add('success', JSON.stringify(res));
+      
+    }, (err) => {
+      this.messageService.add('success', JSON.stringify(err)); 
+      
+    });
     this.router.navigate(['/order']);
     
     return this.resetCart();

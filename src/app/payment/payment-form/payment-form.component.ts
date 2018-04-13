@@ -60,7 +60,10 @@ export class PaymentFormComponent implements OnInit {
       alert('Not a valid phone number');
       return false;
     } else {
-      this.cart.placeOrder();
+      let user = _.find(this.phoneNumbers, { phone: this.phone });
+      console.log(user);
+      
+      this.cart.placeOrder(user);
     }
   }  
 }

@@ -57,7 +57,7 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder() {
-    return this.cart.placeOrder();
+    // return this.cart.placeOrder();
   }
 
   holdOrder() {

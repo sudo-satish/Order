@@ -34,9 +34,15 @@ export class ItemEditComponent implements OnInit {
           // console.log(this.form);
           let item = this.productService.getItem(this.id);
 
-          // this.form.patchValue(item);
+          console.log('item', item);
+          // console.log({ name: item.name });
+          // this.form.setValue({value: {_id: item._id}}); //.setValue takes complete form object as argument
+          this.form.form.patchValue({name:item.name});
+          this.form.form.patchValue({code:item.code});
+
           /*
           this.form.value._id = item._id,
+
           this.form.value.name = item.name,
           this.form.value.code = item.code,
           this.form.value.rate = item.rate,

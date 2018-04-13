@@ -19,7 +19,8 @@ const recipesRoutes: Routes = [
       { path: '', component: ItemListComponent },
       { path: 'new', component: ItemEditComponent, canActivate: [AuthGuard] },
       { path: ':id', component: ItemDetailComponent },
-      { path: ':id/edit', component: ItemEditComponent, canActivate: [AuthGuard] },
+      // { path: ':id/edit', component: ItemEditComponent, canActivate: [AuthGuard] },
+      { path: ':id/edit', component: ItemEditComponent },
     ]
   },
 ];
