@@ -28,33 +28,32 @@
       <li class="nav-item">
         <a routerLink="#" class="nav-link">Configuration</a>
       </li>
+
+      <div class="dropdown nav-item" appDropdown>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Manage
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ng-template [ngIf]=" !authService.isAuthenticated()">
+            <li class="nav-item">
+              <a routerLink="/signup" class="dropdown-item">Register</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/signin" class="dropdown-item">Login</a>
+            </li>
+          </ng-template>
+          <ng-template [ngIf]=" authService.isAuthenticated()">
+            <li class="nav-item">
+              <a style="cursor: pointer;" (click)="onLogout()" class="dropdown-item">Logout</a>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
     </ul>
+
+    
   </div>
-
-  <ul class="nav navbar-right">
-
-    <div class="dropdown" appDropdown>
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Manage
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <ng-template [ngIf]=" !authService.isAuthenticated()">
-          <li class="nav-item">
-            <a routerLink="/signup" class="dropdown-item">Register</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/signin" class="dropdown-item">Login</a>
-          </li>
-        </ng-template>
-        <ng-template [ngIf]=" authService.isAuthenticated()">
-          <li class="nav-item">
-            <a style="cursor: pointer;" (click)="onLogout()" class="dropdown-item">Logout</a>
-          </li>
-        </ng-template>
-      </ul>
-    </div>
-  </ul>
 </nav>
 
 

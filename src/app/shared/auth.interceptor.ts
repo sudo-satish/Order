@@ -12,7 +12,8 @@ export class AuthInterceptor implements HttpInterceptor {
     // console.log(req.url);
     let token = localStorage.getItem('token');
     const copiedReq = req.clone({
-      headers: req.headers.append('Auth', 'Bearer ' + token), url: 'http://localhost:3000' + req.url});
+      headers: req.headers.append('Auth', 'Bearer ' + token), url: req.url});
+      // headers: req.headers.append('Auth', 'Bearer ' + token), url: 'http://localhost:3000' + req.url});
     // const copiedReq = req.clone({ headers: req.headers.append('Access-Control-Allow-Origin', '*')});
     // const copiedReq = req.clone({params: req.params.set('auth', this.authService.getToken())});
     return next.handle(copiedReq);
