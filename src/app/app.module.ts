@@ -26,6 +26,10 @@ import { LoggingInterceptor } from './shared/logging.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { ProductModule } from './product/product.module';
 import { ProductService } from './product/product.service';
+import { LayoutComponent } from './layouts/layout/layout.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { RemarkComponent } from './playground/remark/remark.component';
 // import { ItemComponent } from './product/item/item.component';
 // import { HttpClient } from 'selenium-webdriver/http';
 
@@ -40,6 +44,10 @@ import { ProductService } from './product/product.service';
     PaymentFormComponent,
     InvoiceComponent,
     PlaygroundComponent,
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    RemarkComponent,
     // ItemComponent
   ],
   imports: [

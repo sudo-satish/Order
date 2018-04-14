@@ -1,0 +1,113 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "order"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./assets/remark/global/css/bootstrap-extend.min.css",
+        "./assets/remark/css/site.min.css",
+
+        "./assets/remark/global/vendor/animsition/animsition.css",
+        "./assets/remark/global/vendor/asscrollable/asScrollable.css",
+        "./assets/remark/global/vendor/switchery/switchery.css",
+        "./assets/remark/global/vendor/intro-js/introjs.css",
+        "./assets/remark/global/vendor/slidepanel/slidePanel.css",
+        "./assets/remark/global/vendor/flag-icon-css/flag-icon.css",
+
+        "./assets/remark/global/fonts/web-icons/web-icons.min.css",
+        "./assets/remark/global/fonts/brand-icons/brand-icons.min.css",
+
+        "styles.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+
+        "./assets/remark/global/vendor/breakpoints/breakpoints.js",
+        "./assets/remark/global/vendor/babel-external-helpers/babel-external-helpers.js",
+        "./assets/remark/global/vendor/jquery/jquery.js",
+        "./assets/remark/global/vendor/popper-js/umd/popper.min.js",
+        "./assets/remark/global/vendor/bootstrap/bootstrap.js",
+        "./assets/remark/global/vendor/animsition/animsition.js",
+        "./assets/remark/global/vendor/mousewheel/jquery.mousewheel.js",
+        "./assets/remark/global/vendor/asscrollbar/jquery-asScrollbar.js",
+        "./assets/remark/global/vendor/asscrollable/jquery-asScrollable.js",
+        "./assets/remark/global/vendor/ashoverscroll/jquery-asHoverScroll.js",
+
+        "./assets/remark/global/vendor/switchery/switchery.js",
+        "./assets/remark/global/vendor/intro-js/intro.js",
+        "./assets/remark/global/vendor/screenfull/screenfull.js",
+        "./assets/remark/global/vendor/slidepanel/jquery-slidePanel.js",
+
+        "./assets/remark/global/js/Component.js",
+        "./assets/remark/global/js/Base.js",
+        "./assets/remark/global/js/Config.js",
+
+        "./assets/remark/js/Section/Menubar.js",
+        "./assets/remark/js/Section/GridMenu.js",
+        "./assets/remark/js/Section/Sidebar.js",
+        "./assets/remark/js/Section/PageAside.js",
+        "./assets/remark/js/Plugin/menu.js",
+
+        "./assets/remark/global/js/config/colors.js",
+        "./assets/remark/js/config/tour.js",
+
+        "./assets/remark/js/Site.js",
+        "./assets/remark/global/js/Plugin/asscrollable.js",
+        "./assets/remark/global/js/Plugin/slidepanel.js",
+        "./assets/remark/global/js/Plugin/switchery.js"
+
+
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}
