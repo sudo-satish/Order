@@ -1,64 +1,11 @@
 <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<nav class="navbar navbar-expand navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="../assets/images/logo/logo.jpg" width="30" height="30" alt="OrderIstic">
+
+<!-- <nav class="navbar navbar-dark bg-dark"> -->
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <!-- <a class="navbar-brand" href="">Menu</a> -->
+  <a class="navbar-brand">
+    <img src="assets/images/logo/logo.jpg" width="30" height="30" alt="OrderIstic">
   </a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a routerLink="/" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/order" class="nav-link">Take Order</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="index.html#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          Product
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-          <a class="dropdown-item" routerLink="/item">Item</a>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a routerLink="#" class="nav-link">Role and access</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="#" class="nav-link">Configuration</a>
-      </li>
-
-      <div class="dropdown nav-item" appDropdown>
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          Manage
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <ng-template [ngIf]=" !authService.isAuthenticated()">
-            <li class="nav-item">
-              <a routerLink="/signup" class="dropdown-item">Register</a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/signin" class="dropdown-item">Login</a>
-            </li>
-          </ng-template>
-          <ng-template [ngIf]=" authService.isAuthenticated()">
-            <li class="nav-item">
-              <a style="cursor: pointer;" (click)="onLogout()" class="dropdown-item">Logout</a>
-            </li>
-          </ng-template>
-        </ul>
-      </div>
-    </ul>
-
-    
-  </div>
-</nav>
-
-
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="index.html#">Never expand</a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -67,9 +14,12 @@
   <div class="navbar-collapse collapse" id="navbarsExample01" style="">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html#">Home
+        <a class="nav-link" href="/">Home
           <span class="sr-only">(current)</span>
         </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/order">Take Order</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="index.html#">Link</a>
@@ -78,13 +28,35 @@
         <a class="nav-link disabled" href="index.html#">Disabled</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" routerLink="/item" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Product</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="index.html#">Action</a>
-          <a class="dropdown-item" href="index.html#">Another action</a>
-          <a class="dropdown-item" href="index.html#">Something else here</a>
+          <a class="dropdown-item" routerLink="/item">Item</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">Role and access</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">Configuration</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Manage</a>
+        <ng-template [ngIf]=" !authService.isAuthenticated()">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+            <a class="dropdown-item" routerLink="/signup">Register</a>
+            <a class="dropdown-item" routerLink="/signin">Login</a>
+          </div>
+        </ng-template>
+        <ng-template [ngIf]=" authService.isAuthenticated()">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+            <a class="dropdown-item" (click)="onLogout()" style="cursor: pointer;">Logout</a>
+          </div>
+        </ng-template>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/client" class="nav-link">Create Client</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-md-0">

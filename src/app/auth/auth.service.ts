@@ -1,8 +1,11 @@
 import { Router } from '@angular/router';
 // import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { MessageService } from '../services/message.service';
+import { Client } from './models/client.model';
+// import { Client } from './models/client.model';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -63,5 +66,15 @@ export class AuthService {
 
   getUser() {
     return this.user;
+  }
+
+  createClient(client:Client) {
+    return this.httpClient.post('/auth/client', client);
+  }
+  updateClient(client:Client) {
+    return this.httpClient.put('/auth/client', client);
+  }
+  getAllClients(): Observable<Client[]> {
+    return this.httpClient.get<Client[]>('/auth/client');
   }
 }
